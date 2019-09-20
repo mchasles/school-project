@@ -3,7 +3,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 
 import Avatar from "@material-ui/core/Avatar";
 import Container from "@material-ui/core/Container";
-import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
@@ -15,18 +14,15 @@ function App() {
   return (
     <>
       <CssBaseline />
-      <Container maxWidth="false">
+      <Container maxWidth={false}>
         <List>
           {students.students.map(student => (
-            <>
-              <ListItem alignItems="center">
-                <ListItemAvatar>
-                  <Avatar alt={student.name} src={student.avatar} />
-                </ListItemAvatar>
-                <ListItemText primary={student.name} />
-              </ListItem>
-              <Divider variant="inset" component="li" />
-            </>
+            <ListItem key={student.id} alignItems="center" divider>
+              <ListItemAvatar>
+                <Avatar alt={student.name} src={student.avatar} />
+              </ListItemAvatar>
+              <ListItemText primary={student.name} />
+            </ListItem>
           ))}
         </List>
       </Container>
