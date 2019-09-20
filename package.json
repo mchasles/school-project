@@ -1,9 +1,0 @@
-{
-  "name": "school-project",
-  "version": "1.0.0",
-  "description": "Student management application.",
-  "main": "index.js",
-  "repository": "https://github.com/mchasles/school-project.git",
-  "author": "Maxime Chasles",
-  "license": "MIT"
-}
