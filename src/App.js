@@ -1,15 +1,15 @@
-import React, { useCallback, useEffect } from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import React, { useCallback, useEffect } from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
-import { useSelector, useDispatch } from "react-redux";
-import { fetchStudents } from "./students.actions";
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchStudents } from './students.actions';
 
-import Avatar from "@material-ui/core/Avatar";
-import Container from "@material-ui/core/Container";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemText from "@material-ui/core/ListItemText";
+import Avatar from '@material-ui/core/Avatar';
+import Container from '@material-ui/core/Container';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemText from '@material-ui/core/ListItemText';
 
 function App() {
   const students = useSelector(state => state.students);
