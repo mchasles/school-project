@@ -1,0 +1,3 @@
+DELETE http://localhost:3004/students/3 HTTP/1.1
+
+###

@@ -6,6 +6,43 @@ export const FETCH_STUDENTS_FAILURE = 'FETCH_STUDENTS_FAILURE';
 
 export const REMOVE_STUDENT_SUCCESS = 'REMOVE_STUDENT_SUCCESS';
 
+export const EDIT_STUDENT_BEGIN = 'EDIT_STUDENT_BEGIN';
+export const EDIT_STUDENT_EXIT = 'EDIT_STUDENT_EXIT';
+export const EDIT_STUDENT_SUCCESS = 'EDIT_STUDENT_SUCCESS';
+
+export const editStudentBegin = id => ({
+  type: EDIT_STUDENT_BEGIN,
+  payload: { id }
+});
+
+export const editStudent = (id, data) => {
+  return dispatch =>
+    fetch(`${API_URL}/students/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(handleErrors)
+      .then(res => res.json())
+      .then(student => {
+        dispatch(editStudentSuccess(student));
+        dispatch(editStudentExit());
+        return student;
+      })
+      .catch(error => dispatch(fetchStudentsFailure(error)));
+};
+
+export const editStudentSuccess = student => ({
+  type: EDIT_STUDENT_SUCCESS,
+  payload: student
+});
+
+export const editStudentExit = () => ({
+  type: EDIT_STUDENT_EXIT
+});
+
 export const fetchStudentsBegin = () => ({
   type: FETCH_STUDENTS_BEGIN
 });
