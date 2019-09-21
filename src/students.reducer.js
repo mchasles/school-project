@@ -1,7 +1,8 @@
 import {
   FETCH_STUDENTS_BEGIN,
   FETCH_STUDENTS_SUCCESS,
-  FETCH_STUDENTS_FAILURE
+  FETCH_STUDENTS_FAILURE,
+  REMOVE_STUDENT_SUCCESS
 } from './students.actions';
 
 const initialState = {
@@ -11,7 +12,7 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case FETCH_STUDENTS_BEGIN:
       return {
         ...state,
@@ -34,7 +35,13 @@ export default (state = initialState, action) => {
         students: []
       };
 
+    case REMOVE_STUDENT_SUCCESS:
+      return {
+        ...state,
+        students: state.students.filter(({ id }) => id !== action.payload.id)
+      };
+
     default:
       return state;
   }
-}
+};
