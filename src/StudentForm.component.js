@@ -38,7 +38,7 @@ function StudentForm({ student = {}, onClickAway, onSubmit }) {
             onSubmit({
               ...student,
               name: inputNameRef.current.value,
-              avatar: faker.image.avatar()
+              avatar: student.avatar || faker.image.avatar()
             });
           }}
         >
