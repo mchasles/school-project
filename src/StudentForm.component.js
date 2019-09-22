@@ -9,17 +9,17 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import TextField from '@material-ui/core/TextField';
 
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   editNameInput: {
     width: '100%',
-    marginRight: '16px',
+    marginRight: theme.spacing(4),
     '& input': {
       letterSpacing: '0.00938em'
     }
   }
-});
+}));
 
 function StudentForm({ student = {}, onClickAway, onSubmit }) {
   const inputNameRef = useRef();
