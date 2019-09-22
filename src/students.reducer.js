@@ -5,16 +5,12 @@ import {
   EDIT_STUDENT_OPEN,
   EDIT_STUDENT_CLOSE,
   EDIT_STUDENT_SUCCESS,
-  FETCH_STUDENTS_BEGIN,
   FETCH_STUDENTS_SUCCESS,
-  FETCH_STUDENTS_FAILURE,
   REMOVE_STUDENT_SUCCESS
 } from './students.actions';
 
 const initialState = {
   students: [],
-  loading: false,
-  error: null,
   currentEditId: null,
   addingStudent: false
 };
@@ -28,7 +24,6 @@ export default (state = initialState, action) => {
       };
 
     case ADD_STUDENT_SUCCESS:
-      console.log(action);
       return {
         ...state,
         students: [action.payload, ...state.students]
@@ -62,26 +57,10 @@ export default (state = initialState, action) => {
         currentEditId: null
       };
 
-    case FETCH_STUDENTS_BEGIN:
-      return {
-        ...state,
-        loading: true,
-        error: null
-      };
-
     case FETCH_STUDENTS_SUCCESS:
       return {
         ...state,
-        loading: false,
         students: action.payload.students
-      };
-
-    case FETCH_STUDENTS_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload.error,
-        students: []
       };
 
     case REMOVE_STUDENT_SUCCESS:

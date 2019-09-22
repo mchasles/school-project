@@ -4,9 +4,7 @@ export const ADD_STUDENT_OPEN = 'ADD_STUDENT_OPEN';
 export const ADD_STUDENT_CLOSE = 'ADD_STUDENT_CLOSE';
 export const ADD_STUDENT_SUCCESS = 'ADD_STUDENT_SUCCESS';
 
-export const FETCH_STUDENTS_BEGIN = 'FETCH_STUDENTS_BEGIN';
 export const FETCH_STUDENTS_SUCCESS = 'FETCH_STUDENTS_SUCCESS';
-export const FETCH_STUDENTS_FAILURE = 'FETCH_STUDENTS_FAILURE';
 
 export const EDIT_STUDENT_OPEN = 'EDIT_STUDENT_OPEN';
 export const EDIT_STUDENT_CLOSE = 'EDIT_STUDENT_CLOSE';
@@ -73,18 +71,9 @@ export const editStudentClose = () => ({
   type: EDIT_STUDENT_CLOSE
 });
 
-export const fetchStudentsBegin = () => ({
-  type: FETCH_STUDENTS_BEGIN
-});
-
 export const fetchStudentsSuccess = students => ({
   type: FETCH_STUDENTS_SUCCESS,
   payload: { students }
-});
-
-export const fetchStudentsFailure = error => ({
-  type: FETCH_STUDENTS_FAILURE,
-  payload: { error }
 });
 
 export const removeStudentsSuccess = id => ({
@@ -93,17 +82,14 @@ export const removeStudentsSuccess = id => ({
 });
 
 export const fetchStudents = () => {
-  return dispatch => {
-    dispatch(fetchStudentsBegin());
-    return fetch(`${API_URL}/students`)
+  return dispatch =>
+    fetch(`${API_URL}/students`)
       .then(handleErrors)
       .then(res => res.json())
       .then(students => {
         dispatch(fetchStudentsSuccess(students));
         return students;
-      })
-      .catch(error => dispatch(fetchStudentsFailure(error)));
-  };
+      });
 };
 
 export const removeStudent = id => {

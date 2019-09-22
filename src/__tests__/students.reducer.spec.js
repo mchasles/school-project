@@ -22,8 +22,8 @@ describe('async actions', () => {
         payload: { students: mockStudents }
       })
     ).toEqual({
-      error: null,
-      loading: false,
+      currentEditId: null,
+      addingStudent: false,
       students: [
         { id: 1, name: 'Maxime' },
         { id: 2, name: 'Jean' },
@@ -45,8 +45,8 @@ describe('async actions', () => {
         payload: { id: 2 }
       })
     ).toEqual({
-      error: null,
-      loading: false,
+      currentEditId: null,
+      addingStudent: false,
       students: [{ id: 1, name: 'Maxime' }, { id: 3, name: 'Sophie' }]
     });
   });

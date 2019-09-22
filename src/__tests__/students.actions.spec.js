@@ -5,7 +5,6 @@ import fetchMock from 'fetch-mock';
 import { API_URL } from '../config';
 
 import {
-  FETCH_STUDENTS_BEGIN,
   FETCH_STUDENTS_SUCCESS,
   fetchStudents,
   removeStudent,
@@ -41,7 +40,6 @@ describe('async actions', () => {
     await store.dispatch(fetchStudents());
 
     expect(store.getActions()).toEqual([
-      { type: FETCH_STUDENTS_BEGIN },
       {
         payload: {
           students: {
