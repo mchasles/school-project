@@ -11,8 +11,7 @@ import {
   REMOVE_STUDENT_SUCCESS
 } from '../students.actions';
 
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
+const mockStore = configureMockStore([thunk]);
 
 describe('async actions', () => {
   let mockStudents;
