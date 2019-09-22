@@ -59,7 +59,7 @@ function StudentForm({ student = {}, onClickAway, onSubmit }) {
             size="small"
             color="primary"
           >
-            {student.id ? 'Save' : 'Add'}
+            {student.id >= 0 ? 'Save' : 'Add'}
           </Button>
         </Box>
       </ClickAwayListener>
