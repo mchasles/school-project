@@ -1,6 +1,6 @@
 import {
-  EDIT_STUDENT_BEGIN,
-  EDIT_STUDENT_EXIT,
+  EDIT_STUDENT_OPEN,
+  EDIT_STUDENT_CLOSE,
   EDIT_STUDENT_SUCCESS,
   FETCH_STUDENTS_BEGIN,
   FETCH_STUDENTS_SUCCESS,
@@ -17,7 +17,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case EDIT_STUDENT_BEGIN:
+    case EDIT_STUDENT_OPEN:
       return {
         ...state,
         currentEditId: action.payload.id
@@ -33,7 +33,7 @@ export default (state = initialState, action) => {
         )
       };
 
-    case EDIT_STUDENT_EXIT:
+    case EDIT_STUDENT_CLOSE:
       return {
         ...state,
         currentEditId: null

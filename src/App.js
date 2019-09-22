@@ -3,9 +3,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  editStudentBegin,
+  editStudentOpen,
   editStudent,
-  editStudentExit,
+  editStudentClose,
   fetchStudents,
   removeStudent
 } from './students.actions';
@@ -37,7 +37,7 @@ function App() {
     fetchAllStudents();
   }, [fetchAllStudents]);
 
-  const cancelEdit = () => dispatch(editStudentExit());
+  const cancelEdit = () => dispatch(editStudentClose());
   const submitEditStudent = (student, name) => {
     dispatch(
       editStudent(student.id, {
@@ -70,7 +70,7 @@ function App() {
                     <ListItemText primary={student.name} />
                     <ListItemSecondaryAction>
                       <IconButton
-                        onClick={() => dispatch(editStudentBegin(student.id))}
+                        onClick={() => dispatch(editStudentOpen(student.id))}
                         aria-label="edit"
                       >
                         <EditIcon />

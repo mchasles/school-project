@@ -6,12 +6,12 @@ export const FETCH_STUDENTS_FAILURE = 'FETCH_STUDENTS_FAILURE';
 
 export const REMOVE_STUDENT_SUCCESS = 'REMOVE_STUDENT_SUCCESS';
 
-export const EDIT_STUDENT_BEGIN = 'EDIT_STUDENT_BEGIN';
-export const EDIT_STUDENT_EXIT = 'EDIT_STUDENT_EXIT';
+export const EDIT_STUDENT_OPEN = 'EDIT_STUDENT_OPEN';
+export const EDIT_STUDENT_CLOSE = 'EDIT_STUDENT_CLOSE';
 export const EDIT_STUDENT_SUCCESS = 'EDIT_STUDENT_SUCCESS';
 
-export const editStudentBegin = id => ({
-  type: EDIT_STUDENT_BEGIN,
+export const editStudentOpen = id => ({
+  type: EDIT_STUDENT_OPEN,
   payload: { id }
 });
 
@@ -27,20 +27,18 @@ export const editStudent = (id, data) => {
       .then(handleErrors)
       .then(res => res.json())
       .then(student => {
-        dispatch(editStudentSuccess(student));
-        dispatch(editStudentExit());
+        dispatch({
+          type: EDIT_STUDENT_SUCCESS,
+          payload: student
+        });
+        dispatch(editStudentClose());
         return student;
       })
       .catch(error => dispatch(fetchStudentsFailure(error)));
 };
 
-export const editStudentSuccess = student => ({
-  type: EDIT_STUDENT_SUCCESS,
-  payload: student
-});
-
-export const editStudentExit = () => ({
-  type: EDIT_STUDENT_EXIT
+export const editStudentClose = () => ({
+  type: EDIT_STUDENT_CLOSE
 });
 
 export const fetchStudentsBegin = () => ({
