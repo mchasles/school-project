@@ -32,6 +32,7 @@ function StudentForm({ student = {}, onClickAway, onSubmit }) {
           width={1}
           display="flex"
           justifyContent="space-between"
+          alignItems="center"
           component="form"
           onSubmit={e => {
             e.preventDefault();
