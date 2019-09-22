@@ -1,4 +1,7 @@
 import {
+  ADD_STUDENT_OPEN,
+  ADD_STUDENT_CLOSE,
+  ADD_STUDENT_SUCCESS,
   EDIT_STUDENT_OPEN,
   EDIT_STUDENT_CLOSE,
   EDIT_STUDENT_SUCCESS,
@@ -12,11 +15,31 @@ const initialState = {
   students: [],
   loading: false,
   error: null,
-  currentEditId: null
+  currentEditId: null,
+  addingStudent: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case ADD_STUDENT_OPEN:
+      return {
+        ...state,
+        addingStudent: true
+      };
+
+    case ADD_STUDENT_SUCCESS:
+      console.log(action);
+      return {
+        ...state,
+        students: [action.payload, ...state.students]
+      };
+
+    case ADD_STUDENT_CLOSE:
+      return {
+        ...state,
+        addingStudent: false
+      };
+
     case EDIT_STUDENT_OPEN:
       return {
         ...state,

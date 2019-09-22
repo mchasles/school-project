@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import faker from 'faker';
 
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
@@ -34,7 +35,11 @@ function StudentForm({ student = {}, onClickAway, onSubmit }) {
           component="form"
           onSubmit={e => {
             e.preventDefault();
-            onSubmit(student, inputNameRef.current.value);
+            onSubmit({
+              ...student,
+              name: inputNameRef.current.value,
+              avatar: faker.image.avatar()
+            });
           }}
         >
           <ListItemAvatar>
@@ -54,7 +59,7 @@ function StudentForm({ student = {}, onClickAway, onSubmit }) {
             size="small"
             color="primary"
           >
-            {student ? 'Save' : 'Add'}
+            {student.id ? 'Save' : 'Add'}
           </Button>
         </Box>
       </ClickAwayListener>

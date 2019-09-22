@@ -1,14 +1,47 @@
 import { API_URL } from './config';
 
+export const ADD_STUDENT_OPEN = 'ADD_STUDENT_OPEN';
+export const ADD_STUDENT_CLOSE = 'ADD_STUDENT_CLOSE';
+export const ADD_STUDENT_SUCCESS = 'ADD_STUDENT_SUCCESS';
+
 export const FETCH_STUDENTS_BEGIN = 'FETCH_STUDENTS_BEGIN';
 export const FETCH_STUDENTS_SUCCESS = 'FETCH_STUDENTS_SUCCESS';
 export const FETCH_STUDENTS_FAILURE = 'FETCH_STUDENTS_FAILURE';
 
-export const REMOVE_STUDENT_SUCCESS = 'REMOVE_STUDENT_SUCCESS';
-
 export const EDIT_STUDENT_OPEN = 'EDIT_STUDENT_OPEN';
 export const EDIT_STUDENT_CLOSE = 'EDIT_STUDENT_CLOSE';
 export const EDIT_STUDENT_SUCCESS = 'EDIT_STUDENT_SUCCESS';
+
+export const REMOVE_STUDENT_SUCCESS = 'REMOVE_STUDENT_SUCCESS';
+
+export const addStudentOpen = () => ({
+  type: ADD_STUDENT_OPEN
+});
+
+export const addStudent = data => {
+  return dispatch =>
+    fetch(`${API_URL}/students`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(handleErrors)
+      .then(res => res.json())
+      .then(student => {
+        dispatch({
+          type: ADD_STUDENT_SUCCESS,
+          payload: student
+        });
+        dispatch(addStudentClose());
+        return student;
+      });
+};
+
+export const addStudentClose = () => ({
+  type: ADD_STUDENT_CLOSE
+});
 
 export const editStudentOpen = id => ({
   type: EDIT_STUDENT_OPEN,
@@ -33,8 +66,7 @@ export const editStudent = (id, data) => {
         });
         dispatch(editStudentClose());
         return student;
-      })
-      .catch(error => dispatch(fetchStudentsFailure(error)));
+      });
 };
 
 export const editStudentClose = () => ({
