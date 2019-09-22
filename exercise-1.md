@@ -8,7 +8,7 @@
 
 Node JS avec Express et base de données PostgreSQL.
 
-PHP Symphony en remplacement.
+PHP Symfony en remplacement.
 
 Utilisation de GraphQL.
 

@@ -34,14 +34,15 @@ Plus de détails sur cet outil et les commandes disponibles [ici](./README_CRA.m
 - Redux
 - Material-UI
 
-## Pistes d'amélioration techniques
+## Pistes d'améliorations techniques
 
 - utiliser PropTypes
 - plus de tests unitaires (etudier l'utilisation de [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 - test fonctionnels ([Cypress](https://cypress.io) ou [Cucumber](https://cucumber.io))
 - utiliser Redux Saga
 
-## Pistes d'amélioration functionnelles
+## Pistes d'améliorations fonctionnelles
 
-- plus de champs éditables (dont le téléchargment d'un avatar)
-- ajout du composant 'snackbar' pour le feedback utilisateur notamment en cas d'erreur de l'API
+- gérer les erreurs de l'API
+- plus de champs éditables (dont le téléchargment d'un avatar) et validation de ces derniers.
+- ajout du composant `snackbar` pour le feedback utilisateur (notamment en cas d'erreur de l'API)
